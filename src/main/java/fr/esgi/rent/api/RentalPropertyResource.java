@@ -37,4 +37,11 @@ public class RentalPropertyResource {
                 .map(ResponseEntity::ok)
                 .orElseThrow();
     }
+
+    @PostMapping("/rental-properties")
+    public ResponseEntity<RentalPropertyDTO> createRentalProperty(@RequestBody RentalPropertyDTO dto) {
+        var entity = rentalPropertyMapper.fromDTO(dto);
+        var saved = rentalPropertyRepository.save(entity);
+        return ResponseEntity.ok(rentalPropertyMapper.toDTO(saved));
+    }
 }
