@@ -9,7 +9,8 @@ import java.util.Objects;
 import java.util.UUID;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Table(name = "rental_property")
 public class RentalPropertyEntity {
     @GeneratedValue
