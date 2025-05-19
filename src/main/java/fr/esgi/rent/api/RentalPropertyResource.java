@@ -4,9 +4,11 @@ import fr.esgi.rent.dto.RentalPropertyDTO;
 import fr.esgi.rent.mapper.RentalPropertyMapper;
 import fr.esgi.rent.repository.RentalPropertyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api")
@@ -26,5 +28,13 @@ public class RentalPropertyResource {
                 .stream()
                 .map(rentalPropertyMapper::toDTO)
                 .toList();
+    }
+
+    @GetMapping("/rental-properties/{id}")
+    public ResponseEntity<RentalPropertyDTO> getRentalPropertyById(@PathVariable UUID id) {
+        return rentalPropertyRepository.findById(id)
+                .map(rentalPropertyMapper::toDTO)
+                .map(ResponseEntity::ok)
+                .orElseThrow();
     }
 }
