@@ -1,7 +1,8 @@
-package fr.esgi.velib.mapper;
+package fr.esgi.velib.api.mapper;
 
 import fr.esgi.velib.domain.CoordonneesGeoEntity;
 import fr.esgi.velib.dto.CoordonneesGeoDTO;
+import fr.esgi.velib.mapper.CoordonneesGeoMapper;
 import org.junit.jupiter.api.Test;
 
 import java.util.UUID;
