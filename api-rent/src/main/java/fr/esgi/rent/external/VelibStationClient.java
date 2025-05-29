@@ -11,8 +11,13 @@ import java.util.stream.Collectors;
 
 @Service
 public class VelibStationClient {
-    private final RestTemplate restTemplate = new RestTemplate();
+    private final RestTemplate restTemplate;
     private static final String VELIB_API_URL = "http://localhost:8081/stations/velibs";
+
+    public VelibStationClient(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
+
 
     public List<String> getCommunesWithStations(List<String> towns) {
         VelibStationRequestDTO request = new VelibStationRequestDTO();
